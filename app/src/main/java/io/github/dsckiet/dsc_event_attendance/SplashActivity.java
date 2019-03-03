@@ -22,7 +22,7 @@ public class SplashActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         ImageView logolayout = findViewById(R.id.logo);
-        logolayout.animate().alpha(1.0f).scaleX(0.9f).scaleY(0.9f).setDuration(2500);
+        logolayout.animate().alpha(1.0f).scaleX(1.1f).scaleY(1.1f).setDuration(2500);
 
         Boolean isFirstRun = getSharedPreferences("PREFERENCES", MODE_PRIVATE)
                 .getBoolean("isfirstrun", true);
