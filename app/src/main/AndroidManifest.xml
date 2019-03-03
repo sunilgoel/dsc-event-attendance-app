@@ -11,7 +11,9 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AttendanceActivity"></activity>
+        <activity
+            android:name=".AttendanceActivity"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait">
