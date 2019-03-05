@@ -24,8 +24,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import static io.github.dsckiet.dsc_event_attendance.Constant.BASE_URL;
+import static io.github.dsckiet.dsc_event_attendance.Constant.GOOGLE_ID;
+
 public class AttendanceActivity extends AppCompatActivity {
-    private static String url = "http://dsckiet.herokuapp.com/" + "api/mark_attendance";
+    private static String url = BASE_URL +  "mark_attendance/" + GOOGLE_ID;
     String attendeeId = "";
     CardView button;
     EditText attendeeIDet;
@@ -74,6 +77,8 @@ public class AttendanceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendance);
+
+        String sessionId= getIntent().getStringExtra("GOOGLE_ACCOUNT_ID");
 
         attendeeIDet = findViewById(R.id.editText_attendeeId);
 

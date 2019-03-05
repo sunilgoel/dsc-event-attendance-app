@@ -1,5 +1,6 @@
 package io.github.dsckiet.dsc_event_attendance;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -31,8 +32,7 @@ public class AuthActivity extends AppCompatActivity {
     CardView mGoogleSignInButton;
 
     private FirebaseAuth mAuth;
-//    LottieAnimationView av_from_code;
-//    ProgressDialog progressDialog;
+    ProgressDialog progressDialog;
     RelativeLayout layout;
     private GoogleSignInClient mGoogleSignInClient;
 
@@ -41,13 +41,13 @@ public class AuthActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
 
-//        progressDialog = new ProgressDialog(this);
+        progressDialog = new ProgressDialog(this);
 
         layout = findViewById(R.id.main_layout);
-//        av_from_code = findViewById(R.id.av_from_code);
 
 //        mSignOutButton = findViewById(R.id.google_sign_out);
         mGoogleSignInButton = findViewById(R.id.google_sign_in);
+
         // Initializing Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
@@ -69,11 +69,6 @@ public class AuthActivity extends AppCompatActivity {
     }
 
     private void signIn() {
-//        layout.animate().alpha(0.4f);
-
-//        av_from_code.setAnimation("loading.json");
-//        av_from_code.playAnimation();
-//        av_from_code.loop(true);
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
@@ -96,16 +91,11 @@ public class AuthActivity extends AppCompatActivity {
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
-//        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
+//        Log.d(TAG, "firebaseAuthWithGoogle:" + account.getId());
 
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
-//        progressDialog.setMessage("logging in user..");
-//        progressDialog.show();
-
-//        layout.animate().alpha(0.4f);
-//        av_from_code.setAnimation("loading.json");
-//        av_from_code.playAnimation();
-//        av_from_code.loop(true);
+        progressDialog.setMessage("Signing in...");
+        progressDialog.show();
 
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -114,7 +104,6 @@ public class AuthActivity extends AppCompatActivity {
 
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
-
                             Intent intent = new Intent(AuthActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish();

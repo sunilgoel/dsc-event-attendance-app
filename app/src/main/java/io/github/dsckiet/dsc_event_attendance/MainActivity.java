@@ -15,15 +15,22 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import static io.github.dsckiet.dsc_event_attendance.Constant.BASE_URL;
+import static io.github.dsckiet.dsc_event_attendance.Constant.GOOGLE_ID;
+
 public class MainActivity extends AppCompatActivity {
 
-    private static String url = "http://dsckiet.herokuapp.com/" + "api/attendees";
+    private static String url = BASE_URL +  "attendees/" + GOOGLE_ID;
     RecyclerView recyclerView;
     JSONObject jsonObj;
     CardView btnMarkAtt;
