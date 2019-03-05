@@ -101,7 +101,7 @@ public class AttendanceActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... urls) {
             String attId = attendeeId;
-            return POST(urls[0], attId);
+            return POST(urls[0], "DSC-" + attId);
         }
 
         @Override
